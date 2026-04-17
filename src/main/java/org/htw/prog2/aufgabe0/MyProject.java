@@ -29,16 +29,18 @@ public class MyProject {
         array[0] = initial;
 
         for(int i = 0; i< 100; i++){
-            e = value - (initial * initial)/2*initial;
+            e = (value - (initial * initial))/(2*initial);
             initial = initial+e;
+            if(initial - array[i]==maxerror){
+                System.out.println(array[i]);
 
-       ///     if(initial - initial[i-1]==maxerror){
-          ///      initial = initial2;
+            }
+            array[i+1] = initial;
+
 
           ///  }else{
              ///   initial = initial2;
-        
-            array[i+1] = initial;
+
             }
 
         return new double[] {initial};
