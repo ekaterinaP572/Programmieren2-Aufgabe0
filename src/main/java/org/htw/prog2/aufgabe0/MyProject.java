@@ -5,7 +5,6 @@ import org.knowm.xchart.SwingWrapper;
 
 import java.util.LinkedList;
 
-import static sun.jvm.hotspot.HelloWorld.e;
 
 public class MyProject {
 
@@ -23,15 +22,25 @@ public class MyProject {
      * @return An array containing the values of all iterations. The last value in the array is the final estimate.
      */
     public static double[] calculateBabylonianRoot(double value, double initial, double maxerror) {
-        int error;
-        int X;
-        /**X = the final result
+        /** int error = (value - (initial)^2)/2*initial;
+        double[] iteration = new double[]{};
+        double X = 0;
+        X = initial;
+       // int i = iteration git dif und git fetch
+
+        double X2 = (value - X(i-1)^2)/(2*X(i-1));
+        double Xn;
+        Xn = X(i-1) + X(i);
+        X = the final result
          * S = value from which the root is calculated
          * estimate the error von estimated result (initial) bis die nah zu maxerror
          * vergleich mit der richtigen Antwort X
-         * eine Schleife aufbauen, die jede
+         * eine Schleife aufbauen, die jeder error in einem Array packt
+         *if(initial[i] - initial[i-1] > maxerror) continue;
+         *                 else{return initial[]}
+         *         return new double[] {initial};
         */
-        maxerror = e(initial)=(value-X(initial-1)^2)/(2*X(initial-1);
+        double e = (value - initial*initial)/(2*initial);
         return new double[] {initial};
     }
 
@@ -43,5 +52,6 @@ public class MyProject {
 
     public static void main(String[] args) {
         plotData(calculateBabylonianRoot(74821, 5, 0.1));
+        System.out.println(e);
     }
 }
