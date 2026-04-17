@@ -26,19 +26,20 @@ public class MyProject {
         double e;
         double[] array = new double[100];
         array[0] = initial;
-        double compare = Math.sqrt(value);
+        double root = Math.sqrt(value);
+        if(value<=0){
+            root = 0;
+        }
         if(maxerror<0){
             maxerror = maxerror*(-1);
         }
 
         for(int i = 0; i<array.length; i++){
-            double toCompare = initial-compare;
+            double toCompare = initial-root;
             if(toCompare<0){
                 toCompare = toCompare*(-1);
             }
             if(toCompare < maxerror) {
-                array[i+1] = initial;
-                System.out.println(array[i]);
                 break;
             }else{
                 e = (value - (initial*initial)) / (2 * initial);
@@ -59,6 +60,6 @@ public class MyProject {
     }
 
     public static void main(String[] args) {
-        plotData(calculateBabylonianRoot(20, 2, 0.1));
+        plotData(calculateBabylonianRoot(74821, 5, 0.1));
     }
 }
