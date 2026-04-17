@@ -24,22 +24,27 @@ public class MyProject {
 
     public static double[] calculateBabylonianRoot(double value, double initial, double maxerror) {
         double e;
-        double initial2;
         double[] array = new double[100];
         array[0] = initial;
         double compare = Math.sqrt(value);
+        if(maxerror<0){
+            maxerror = maxerror*(-1);
+        }
 
         for(int i = 0; i<array.length; i++){
-            e = (value - (initial * initial))/(2*initial);
-            initial = initial+e;
-            array[i+1] = initial;
-            if(initial - compare < maxerror || initial - compare == maxerror){
-                System.out.println(array[i]);
+            double toCompare = initial-compare;
+            if(toCompare<0){
+                toCompare = toCompare*(-1);
             }
-
-
-          ///  }else{
-             ///   initial = initial2;
+            if(toCompare < maxerror) {
+                array[i+1] = initial;
+                System.out.println(array[i]);
+                break;
+            }else{
+                e = (value - (initial*initial)) / (2 * initial);
+                initial = initial + e;
+                array[i+1] = initial;
+            }
 
             }
 
