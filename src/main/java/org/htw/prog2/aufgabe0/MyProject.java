@@ -25,17 +25,20 @@ public class MyProject {
     public static double[] calculateBabylonianRoot(double value, double initial, double maxerror) {
         double e;
         double initial2;
+        double[] array = new double[100];
+        array[0] = initial;
 
-
-        for(int i = 0; i< 10; i++){
+        for(int i = 0; i< 100; i++){
             e = value - (initial * initial)/2*initial;
-            initial2 = initial+e;
-            double[] array = new double[100];
-            array[i] = initial;
-            array[i+1] = initial2;
-            if(initial2 - initial!=maxerror){
-                initial = initial2;
-            }
+            initial = initial+e;
+
+       ///     if(initial - initial[i-1]==maxerror){
+          ///      initial = initial2;
+
+          ///  }else{
+             ///   initial = initial2;
+        
+            array[i+1] = initial;
             }
 
         return new double[] {initial};
