@@ -42,6 +42,6 @@ public class MyProject {
     }
 
     public static void main(String[] args) {
-        plotData(calculateBabylonianRoot(74821, 5, 0));
+        plotData(calculateBabylonianRoot(74821, 5, 0.1));
     }
 }
