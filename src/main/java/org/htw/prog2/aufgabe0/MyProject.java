@@ -21,27 +21,25 @@ public class MyProject {
      * @param maxerror The maximum allowed error
      * @return An array containing the values of all iterations. The last value in the array is the final estimate.
      */
-    public static double[] calculateBabylonianRoot(double value, double initial, double maxerror) {
-        /** int error = (value - (initial)^2)/2*initial;
-        double[] iteration = new double[]{};
-        double X = 0;
-        X = initial;
-       // int i = iteration git dif und git fetch
 
-        double X2 = (value - X(i-1)^2)/(2*X(i-1));
-        double Xn;
-        Xn = X(i-1) + X(i);
-        X = the final result
-         * S = value from which the root is calculated
-         * estimate the error von estimated result (initial) bis die nah zu maxerror
-         * vergleich mit der richtigen Antwort X
-         * eine Schleife aufbauen, die jeder error in einem Array packt
-         *if(initial[i] - initial[i-1] > maxerror) continue;
-         *                 else{return initial[]}
-         *         return new double[] {initial};
-        */
-        double e = (value - initial*initial)/(2*initial);
+    public static double[] calculateBabylonianRoot(double value, double initial, double maxerror) {
+        double e;
+        double initial2;
+
+
+        for(int i = 0; i< 10; i++){
+            e = value - (initial * initial)/2*initial;
+            initial2 = initial+e;
+            double[] array = new double[100];
+            array[i] = initial;
+            array[i+1] = initial2;
+            if(initial2 - initial!=maxerror){
+                initial = initial2;
+            }
+            }
+
         return new double[] {initial};
+
     }
 
     public static void plotData(double[] values) {
@@ -52,6 +50,5 @@ public class MyProject {
 
     public static void main(String[] args) {
         plotData(calculateBabylonianRoot(74821, 5, 0.1));
-        System.out.println(e);
     }
 }
