@@ -27,15 +27,14 @@ public class MyProject {
         double[] array = new double[100];
         array[0] = initial;
         double root = Math.sqrt(value);
-        if(value<=0){
-            root = 0;
-        }
         if(maxerror<0){
             maxerror = maxerror*(-1);
         }
-
         for(int i = 0; i<array.length; i++){
-            double toCompare = initial-root;
+            if(value <= 0 || root <= 0){
+                initial = 0;
+                break;}
+            double toCompare = initial - root;
             if(toCompare<0){
                 toCompare = toCompare*(-1);
             }
@@ -46,7 +45,6 @@ public class MyProject {
                 initial = initial + e;
                 array[i+1] = initial;
             }
-
             }
 
         return new double[] {initial};
