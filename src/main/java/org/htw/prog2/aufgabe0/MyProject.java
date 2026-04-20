@@ -3,8 +3,6 @@ package org.htw.prog2.aufgabe0;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.SwingWrapper;
 
-import java.util.LinkedList;
-
 
 public class MyProject {
 
@@ -30,24 +28,30 @@ public class MyProject {
         if(maxerror<0){
             maxerror = maxerror*(-1);
         }
-        for(int i = 0; i<array.length; i++){
-            if(value <= 0 || root <= 0){
+        for(int i = 0; i<array.length; i++) {
+            if (value <= 0 || root <= 0) {
                 initial = 0;
-                break;}
-            double toCompare = initial - root;
-            if(toCompare<0){
-                toCompare = toCompare*(-1);
-            }
-            if(toCompare < maxerror) {
                 break;
-            }else{
-                e = (value - (initial*initial)) / (2 * initial);
+            }
+            double toCompare = initial - root;
+            if (toCompare < 0) {
+                toCompare = toCompare * (-1);
+            }
+            if (toCompare < maxerror) {
+                int arrayLength = array.length - i + 1;
+                double[] array2 = new double[array.length - arrayLength];
+                for (int i1 = 0; i1 < array.length - arrayLength; i1++) {
+                    double num = array[i1];
+                    array2[i1] = num;}
+                    array = array2;
+                break;
+            } else {
+                e = (value - (initial * initial)) / (2 * initial);
                 initial = initial + e;
-                array[i+1] = initial;
+                array[i + 1] = initial;
+                }
             }
-            }
-
-        return new double[] {initial};
+            return array;
 
     }
 
