@@ -19,7 +19,6 @@ public class MyProject {
      * @param maxerror The maximum allowed error
      * @return An array containing the values of all iterations. The last value in the array is the final estimate.
      */
-
     public static double[] calculateBabylonianRoot(double value, double initial, double maxerror) {
         double e;
         double[] array = new double[100];
@@ -50,15 +49,12 @@ public class MyProject {
                 }
             }
             return array;
-
     }
-
     public static void plotData(double[] values) {
         XYChart chart = new XYChart(500, 500);
         chart.addSeries("Data", values);
         new SwingWrapper(chart).displayChart();
     }
-
     public static void main(String[] args) {
         plotData(calculateBabylonianRoot(74821, 5, 0.1));
     }
