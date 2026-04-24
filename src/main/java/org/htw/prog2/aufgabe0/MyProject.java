@@ -3,6 +3,8 @@ package org.htw.prog2.aufgabe0;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.SwingWrapper;
 
+import java.util.ArrayList;
+
 
 public class MyProject {
 
@@ -20,35 +22,34 @@ public class MyProject {
      * @return An array containing the values of all iterations. The last value in the array is the final estimate.
      */
     public static double[] calculateBabylonianRoot(double value, double initial, double maxerror) {
-        double e;
-        double[] array = new double[100];
         double root = Math.sqrt(value);
+        ArrayList<Double> initials = new ArrayList<>();
+        double toCompare = root - initial;
+        double initialUpdated;
+        double e;
         if(maxerror<0){
             maxerror = maxerror*(-1);
         }
-        for(int i = 0; i<array.length; i++) {
-            if (value <= 0 || root <= 0) {
-                return new double[]{0};
+        if(value <=0 || root <= 0){
+            return new double[] {0};
+        }
+        while(toCompare > maxerror){
+            e = (value - (initial*initial))/(2*initial);
+            initialUpdated = e + initial;
+            initial = initialUpdated;
+            initials.add(initial);
+            toCompare = root - initial;
+            if(toCompare<0){
+                toCompare = toCompare*(-1);
             }
-            double toCompare = initial - root;
-            if (toCompare < 0) {
-                toCompare = toCompare * (-1);
-            }
-            if (toCompare < maxerror) {
-                int arrayLength = array.length - i;
-                double[] array2 = new double[array.length - arrayLength];
-                for (int i1 = 0; i1 < array.length - arrayLength; i1++) {
-                    double num = array[i1];
-                    array2[i1] = num;}
-                    array = array2;
-                break;
-            } else {
-                e = (value - (initial * initial)) / (2 * initial);
-                initial += e;
-                array[i] = initial;
-                }
-            }
-            return array;
+        }
+        double[] array = new double[initials.size()];
+        for(int i = 0; i<initials.size(); i++){
+            double key = initials.get(i);
+            array[i] = key;
+        }
+
+        return array;
     }
     public static void plotData(double[] values) {
         XYChart chart = new XYChart(500, 500);
